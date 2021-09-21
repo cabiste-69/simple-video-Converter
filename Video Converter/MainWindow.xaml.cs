@@ -108,6 +108,7 @@ namespace Video_Converter
             processStartInfo.FileName = "ffmpeg.exe";
             processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
             processStartInfo.Arguments = $"-y -i {input} {output}";
+            MessageBox.Show($"-y -i {input} {output}");
             using(Process exeProcess = Process.Start(processStartInfo))
             {
                 exeProcess.WaitForExit();
