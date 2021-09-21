@@ -1,0 +1,35 @@
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.exe.config
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.exe
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.AssemblyReference.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\MainWindow.g.cs
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\App.g.cs
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.lref
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\MainWindow.baml
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.g.resources
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video_Converter.Properties.Resources.resources
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.GenerateResource.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.CoreCompileInputs.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.exe
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.CopyComplete
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_Content.g.cs
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ffmpeg.exe
