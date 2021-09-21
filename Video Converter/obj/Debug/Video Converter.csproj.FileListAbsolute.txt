@@ -31,5 +31,3 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ru\Xceed.Wpf.Av
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.CopyComplete
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_Content.g.cs
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\ffmpeg.exe

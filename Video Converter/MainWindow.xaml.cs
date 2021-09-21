@@ -107,7 +107,7 @@ namespace Video_Converter
             processStartInfo.UseShellExecute = false;
             processStartInfo.FileName = "ffmpeg.exe";
             processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            processStartInfo.Arguments = $"-i {input} {output}";
+            processStartInfo.Arguments = $"-y -i {input} {output}";
             using(Process exeProcess = Process.Start(processStartInfo))
             {
                 exeProcess.WaitForExit();
