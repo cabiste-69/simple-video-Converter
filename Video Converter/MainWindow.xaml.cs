@@ -96,23 +96,38 @@ namespace Video_Converter
             output = "D:\\" + outputFileName.Text + ".mp4";
             LaunchCMD(path, output);
             
-            Process.Start(@Path.GetDirectoryName(output));
+            Process.Start(@"D:\testing");
             
         }
 
         private void LaunchCMD(string input, string output)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            processStartInfo.CreateNoWindow = false;
-            processStartInfo.UseShellExecute = false;
-            processStartInfo.FileName = "ffmpeg.exe";
-            processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            processStartInfo.Arguments = $"-y -i {input} {output}";
-            MessageBox.Show($"-y -i {input} {output}");
-            using(Process exeProcess = Process.Start(processStartInfo))
+            //ProcessStartInfo processStartInfo = new ProcessStartInfo();
+            //processStartInfo.CreateNoWindow = false;
+            //processStartInfo.UseShellExecute = false;
+            //processStartInfo.FileName = "ffmpeg.exe";
+            //processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
+            //processStartInfo.Arguments = $"-y -i {input} {output}";
+            //MessageBox.Show($"-y -i {input} {output}");
+            //using(Process exeProcess = Process.Start(processStartInfo))
+            //{
+            //    exeProcess.WaitForExit();
+            //}
+
+            var startInfo = new ProcessStartInfo
             {
-                exeProcess.WaitForExit();
+                FileName = @"C:\ffmpeg\ffmpeg.exe",
+                Arguments = @"-y -i C:\Users\comp\Downloads\ez.wmv D:\ezz.mp4",
+                WorkingDirectory = @"D:\testing\",
+                CreateNoWindow = true,
+                UseShellExecute = false
+            };
+            using (var process = new Process { StartInfo = startInfo })
+            {
+                process.Start();
+                process.WaitForExit();
             }
+
         }
 
         private void openExplorer_Click(object sender, RoutedEventArgs e)
