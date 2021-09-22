@@ -27,11 +27,15 @@ namespace Video_Converter
     {
         string path,output;
         private int duration;
+        string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
         string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
 
         public MainWindow()
         {
             InitializeComponent();
+            
+            selectFormat.ItemsSource = knownSupportedFormats;
+            selectFormat.SelectedIndex = 0;
             
         }
 
@@ -94,7 +98,7 @@ namespace Video_Converter
             //Error handeling Done
 
             output = @outputPath.Text;
-            if (!Directory.Exists(output))
+            if (output == "")
             {
                 MessageBox.Show("No ouput path selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -142,7 +146,7 @@ namespace Video_Converter
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text;
+                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text + selectFormat.Text;
             }
         }
 
