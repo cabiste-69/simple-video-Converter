@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("ffmpeg.exe")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("mediainfo.dll")]
 
 

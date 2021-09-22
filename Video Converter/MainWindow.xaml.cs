@@ -18,6 +18,9 @@ using Path = System.IO.Path;
 using System.Diagnostics;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Text.RegularExpressions;
+using DataSizeUnits;
+using NReco.VideoInfo;
+using MediaInfo;
 
 namespace Video_Converter
 {
@@ -29,8 +32,11 @@ namespace Video_Converter
         private static readonly Regex _regex = new Regex("[^0-9]+");
         string path,output;
         private int duration;
+        
         string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
+        int bitrate;
         string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
+
 
         public MainWindow()
         {
@@ -39,6 +45,7 @@ namespace Video_Converter
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
+            
             
 
         }
@@ -56,20 +63,30 @@ namespace Video_Converter
                 video.MediaOpened += PreviewMedia_MediaOpened;
                 video.Play();
                 video.Pause();
-
+                
             }
+            double aaa = new FileInfo(path).Length;
+
+            var mediaInfo = new MediaInfo.MediaInfo();
+            mediaInfo.Open(path);
+            
+            
+            //converts it to kilobit because apparently that's what windows uses
+            DataSize sizeInMegabytes = new DataSize(aaa, Unit.Byte).ConvertToUnit(Unit.Megabyte);
+            fileSize.Text = Convert.ToString(Math.Round(sizeInMegabytes.Quantity,2));
+
         }
 
         void PreviewMedia_MediaOpened(object sender, RoutedEventArgs e)
         {
             var totalDurationTime = video.NaturalDuration.TimeSpan.TotalMilliseconds;
+            duration = (int)video.NaturalDuration.TimeSpan.TotalSeconds;
             
-            duration = (int)video.NaturalDuration.TimeSpan.TotalMilliseconds;
         }
 
         private void VideoPlayClick(object sender, RoutedEventArgs e)
         {
-            if (video.Position.TotalMilliseconds == duration)
+            if (video.Position.TotalSeconds == duration)
             {
                 video.Position = new TimeSpan(0);
             }
@@ -101,21 +118,25 @@ namespace Video_Converter
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(output));
             }
-            LaunchCMD(path, output);
+            double s = Math.Round(CalculateBitRate(), 1);
+
+            //MessageBox.Show($"path: {path} \n output: {output} \n bitrate: {s}");
+            LaunchCMD(path, output, s);
             
             Process.Start(@Path.GetDirectoryName(output));
             
             
         }
 
-        private void LaunchCMD(string input, string output)
-        {            
+        private void LaunchCMD(string input, string output, double bitrate)
+        {
             var startInfo = new ProcessStartInfo
             {
                 FileName = ffmpegPath,
-                Arguments = $"-y -i {input} libx264 -b:v 0.5M -minrate 0.5M -maxrate 0.5M -bufsize 1M{output}",
+                //Arguments = $"-y -i {input} -c:v libx264 -b:v {bitrate.ToString()}M -minrate {bitrate.ToString()}M -maxrate {bitrate.ToString()}M -bufsize 1M {output}",
+                Arguments = $"-y -i {input} -c:v libx264 {output}",
                 WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
-                CreateNoWindow = true,
+                //CreateNoWindow = true,
                 UseShellExecute = false
             };
             using (var process = new Process { StartInfo = startInfo })
@@ -123,7 +144,15 @@ namespace Video_Converter
                 process.Start();
                 process.WaitForExit();
             }
+            //outputPath.Text = $"-i {input} -c:v libx264 -b:v {bitrate.ToString()}K -minrate {bitrate.ToString()}K -maxrate {bitrate.ToString()}K -bufsize 1M {output}";
 
+        }
+
+        private double CalculateBitRate()
+        {
+            double x = Convert.ToDouble(fileSize.Text);
+            DataSize sizeInMegabytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Kilobyte);
+            return sizeInMegabytes.Quantity / duration;
         }
 
         private void outputFileName_TextChanged(object sender, TextChangedEventArgs e)
@@ -140,21 +169,21 @@ namespace Video_Converter
             }
         }
 
-        private void fileSizeYN_Checked(object sender, RoutedEventArgs e)
+        private void fileSizeY_Checked(object sender, RoutedEventArgs e)
         {
-            if(fileSizeYN.IsChecked == true)
-            {
+            
                 fileSize.IsEnabled = true;
                 dataUnit.IsEnabled = true;
                 dataUnit.SelectedIndex = 1;
-            }
-            else
-            {
-                fileSize.IsEnabled = false;
-                fileSize.Text = "";
-                dataUnit.IsEnabled = false;
-                dataUnit.SelectedIndex = -1;
-            }
+            
+        }
+        private void fileSizeY_Unchecked(object sender, RoutedEventArgs e)
+        {
+            fileSize.IsEnabled = false;
+            fileSize.Text = "";
+            dataUnit.IsEnabled = false;
+            dataUnit.SelectedIndex = -1;
+
         }
 
         private void fileSize_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -166,7 +195,7 @@ namespace Video_Converter
         {
             return !_regex.IsMatch(text);
         }
-
+                
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
