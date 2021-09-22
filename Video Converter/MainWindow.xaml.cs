@@ -16,6 +16,7 @@ using System.IO;
 using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.Diagnostics;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
 namespace Video_Converter
 {
@@ -80,16 +81,16 @@ namespace Video_Converter
                 MessageBox.Show("you need to import a video before exporting!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            if(endTimeValue.Value == new TimeSpan(0))
-            {
-                MessageBox.Show("the end time must be greater than 0", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-            if(startTimeValue.Value > endTimeValue.Value)
-            {
-                MessageBox.Show("the end time must be greater than the start time FFS", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
+            //if(endTimeValue.Value == new TimeSpan(0))
+            //{
+            //    MessageBox.Show("the end time must be greater than 0", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return;
+            //}
+            //if(startTimeValue.Value > endTimeValue.Value)
+            //{
+            //    MessageBox.Show("the end time must be greater than the start time FFS", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return;
+            //}
             //Error handeling Done
 
             //MessageBox.Show($"you're going to convert {Path.GetFileName(path)} {video.NaturalDuration.TimeSpan} \n to \n  ");
@@ -119,15 +120,15 @@ namespace Video_Converter
 
         }
 
-        private void openExplorer_Click(object sender, RoutedEventArgs e)
+        private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(@Path.GetDirectoryName(path));
+            
         }
 
-        private void SetTime(TimeSpan x)
-        {
-            endTimeValue.Value = x;
-            startTimeValue.Value = new TimeSpan(0, 0, 0, 0,1);
-        }
+        //private void SetTime(TimeSpan x)
+        //{
+        //    endTimeValue.Value = x;
+        //    startTimeValue.Value = new TimeSpan(0, 0, 0, 0,1);
+        //}
     }
 }

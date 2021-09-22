@@ -10,18 +10,12 @@
     <Grid Background="#FF1F1F1F">
         <MediaElement x:Name="video" HorizontalAlignment="Left" Height="167" Margin="20,26,0,0" VerticalAlignment="Top" Width="316" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
         <Button x:Name="import" Content="import" HorizontalAlignment="Left" Margin="445,46,0,0" VerticalAlignment="Top" Width="102" Height="55" Click="ImportClick"/>
-        <Button x:Name="export" Content="export" HorizontalAlignment="Left" Margin="600,46,0,0" VerticalAlignment="Top" Width="102" Height="55" Click="Export_Click"/>
+        <Button x:Name="export" Content="export" HorizontalAlignment="Left" Margin="592,285,0,0" VerticalAlignment="Top" Width="120" Height="55" Click="Export_Click"/>
         <Button x:Name="videoPlay" Content="Play" HorizontalAlignment="Left" Margin="60,252,0,0" VerticalAlignment="Top" Width="75" Click="VideoPlayClick"/>
         <Button x:Name="videoPause" Content="Pause" HorizontalAlignment="Left" Margin="180,252,0,0" VerticalAlignment="Top" Width="75" Click="VideoPauseClick"/>
-        <TextBlock x:Name="test" HorizontalAlignment="Left" Margin="492,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="74" Width="189" Foreground="White" FontSize="16"/>
-        <xctk:PropertyGridEditorTimeSpanUpDown x:Name="startTimeValue" HorizontalAlignment="Left" Margin="71,355,0,0" VerticalAlignment="Top" Width="133"/>
-        <xctk:PropertyGridEditorTimeSpanUpDown x:Name="endTimeValue" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" Width="133"/>
-        <TextBlock x:Name="startTime" HorizontalAlignment="Left" Margin="71,321,0,0" TextWrapping="Wrap" Text="Start time" VerticalAlignment="Top" Height="29" Width="133" Foreground="White" FontSize="16"/>
-        <TextBlock x:Name="endTime" HorizontalAlignment="Left" Margin="255,321,0,0" TextWrapping="Wrap" Text="end time" VerticalAlignment="Top" Height="29" Width="133" Foreground="White" FontSize="16"/>
-        <TextBlock x:Name="startTime_Copy" HorizontalAlignment="Left" Margin="71,380,0,0" TextWrapping="Wrap" Text="d : hh : mm : ss" VerticalAlignment="Top" Height="29" Width="133" Foreground="White" FontSize="16" Opacity="0.5"/>
-        <TextBlock x:Name="startTime_Copy1" HorizontalAlignment="Left" Margin="255,380,0,0" TextWrapping="Wrap" Text="d : hh : mm : ss" VerticalAlignment="Top" Height="29" Width="133" Foreground="White" FontSize="16" Opacity="0.5"/>
-        <TextBox x:Name="outputFileName" HorizontalAlignment="Left" Height="23" Margin="600,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="600,151,0,0" TextWrapping="Wrap" Text="Output File Name" VerticalAlignment="Top" Width="120" Height="23" Foreground="White"/>
-        <Button x:Name="openExplorer" Content="Button" HorizontalAlignment="Left" Margin="575,272,0,0" VerticalAlignment="Top" Width="106" Height="37" Click="openExplorer_Click"/>
+        <TextBox x:Name="outputFileName" HorizontalAlignment="Left" Height="23" Margin="592,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="592,216,0,0" TextWrapping="Wrap" Text="Output File Name" VerticalAlignment="Top" Width="120" Height="23" Foreground="White"/>
+        <Button x:Name="outputPathButton" Content="..." HorizontalAlignment="Left" Margin="572,377,0,0" VerticalAlignment="Top" Width="32" Height="23" Click="outputPathButton_Click"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="20,377,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="547"/>
     </Grid>
 </Window>
