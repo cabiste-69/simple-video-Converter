@@ -85,23 +85,17 @@ namespace Video_Converter
                 MessageBox.Show("you need to import a video before exporting!", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            //if(endTimeValue.Value == new TimeSpan(0))
-            //{
-            //    MessageBox.Show("the end time must be greater than 0", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return;
-            //}
-            //if(startTimeValue.Value > endTimeValue.Value)
-            //{
-            //    MessageBox.Show("the end time must be greater than the start time FFS", "Error!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return;
-            //}
-            //Error handeling Done
 
             output = @outputPath.Text;
             if (output == "")
             {
                 MessageBox.Show("No ouput path selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
+            }
+
+            if (!Directory.Exists(Path.GetDirectoryName(output)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(output));
             }
             LaunchCMD(path, output);
             
@@ -137,6 +131,21 @@ namespace Video_Converter
             {
                 outputPath.IsEnabled = false;
                 outputPathButton.IsEnabled = false;
+            }
+        }
+
+        private void fileSizeYN_Checked(object sender, RoutedEventArgs e)
+        {
+            if(fileSizeYN.IsChecked == true)
+            {
+                fileSize.IsEnabled = true;
+                dataUnit.IsEnabled = true;
+            }
+            else
+            {
+                fileSize.IsEnabled = false;
+                fileSize.Text = "";
+                dataUnit.IsEnabled = false;
             }
         }
 
