@@ -42,7 +42,7 @@ namespace Video_Converter
             if (openFileDialog.ShowDialog() == true)
             {
                 path = openFileDialog.FileName;
-                test.Text = path;
+                
                 video.Source = new Uri(path);
                 video.Position = TimeSpan.FromSeconds(0);
                 video.MediaOpened += PreviewMedia_MediaOpened;
@@ -55,7 +55,7 @@ namespace Video_Converter
         void PreviewMedia_MediaOpened(object sender, RoutedEventArgs e)
         {
             var totalDurationTime = video.NaturalDuration.TimeSpan.TotalMilliseconds;
-            SetTime(video.NaturalDuration.TimeSpan);
+            
             duration = (int)video.NaturalDuration.TimeSpan.TotalMilliseconds;
         }
 
@@ -93,9 +93,12 @@ namespace Video_Converter
             //}
             //Error handeling Done
 
-            //MessageBox.Show($"you're going to convert {Path.GetFileName(path)} {video.NaturalDuration.TimeSpan} \n to \n  ");
-
-            output = @"D:\" + outputFileName.Text + ".mp4";
+            output = @outputPath.Text;
+            if (!Directory.Exists(output))
+            {
+                MessageBox.Show("No ouput path selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             LaunchCMD(path, output);
             
             Process.Start(@Path.GetDirectoryName(output));
@@ -120,9 +123,27 @@ namespace Video_Converter
 
         }
 
+        private void outputFileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(outputFileName.Text != "")
+            {
+                outputPath.IsEnabled = true;
+                outputPathButton.IsEnabled = true;
+            }else
+            {
+                outputPath.IsEnabled = false;
+                outputPathButton.IsEnabled = false;
+            }
+        }
+
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text;
+            }
         }
 
         //private void SetTime(TimeSpan x)
