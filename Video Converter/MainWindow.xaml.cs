@@ -17,6 +17,7 @@ using Microsoft.Win32;
 using Path = System.IO.Path;
 using System.Diagnostics;
 using Microsoft.WindowsAPICodePack.Dialogs;
+using System.Text.RegularExpressions;
 
 namespace Video_Converter
 {
@@ -25,6 +26,7 @@ namespace Video_Converter
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static readonly Regex _regex = new Regex("[^0-9]+");
         string path,output;
         private int duration;
         string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
@@ -36,7 +38,9 @@ namespace Video_Converter
             
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
+            dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
             
+
         }
 
         private void ImportClick(object sender, RoutedEventArgs e)
@@ -101,6 +105,7 @@ namespace Video_Converter
             
             Process.Start(@Path.GetDirectoryName(output));
             
+            
         }
 
         private void LaunchCMD(string input, string output)
@@ -108,7 +113,7 @@ namespace Video_Converter
             var startInfo = new ProcessStartInfo
             {
                 FileName = ffmpegPath,
-                Arguments = $"-y -i {input} {output}",
+                Arguments = $"-y -i {input} libx264 -b:v 0.5M -minrate 0.5M -maxrate 0.5M -bufsize 1M{output}",
                 WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
                 CreateNoWindow = true,
                 UseShellExecute = false
@@ -123,13 +128,14 @@ namespace Video_Converter
 
         private void outputFileName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(outputFileName.Text != "")
+            if(outputFileName.Text.Trim() != "")
             {
                 outputPath.IsEnabled = true;
                 outputPathButton.IsEnabled = true;
             }else
             {
                 outputPath.IsEnabled = false;
+                outputPath.Text = "";
                 outputPathButton.IsEnabled = false;
             }
         }
@@ -140,13 +146,25 @@ namespace Video_Converter
             {
                 fileSize.IsEnabled = true;
                 dataUnit.IsEnabled = true;
+                dataUnit.SelectedIndex = 1;
             }
             else
             {
                 fileSize.IsEnabled = false;
                 fileSize.Text = "";
                 dataUnit.IsEnabled = false;
+                dataUnit.SelectedIndex = -1;
             }
+        }
+
+        private void fileSize_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
         }
 
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
@@ -155,7 +173,7 @@ namespace Video_Converter
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text + selectFormat.Text;
+                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text.Trim() + selectFormat.Text;
             }
         }
 
