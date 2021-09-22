@@ -34,7 +34,6 @@ namespace Video_Converter
         private int duration;
         
         string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
-        int bitrate;
         string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
 
 

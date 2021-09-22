@@ -157,7 +157,7 @@ namespace Video_Converter {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Video Converter;component/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/simple Video Converter;component/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
