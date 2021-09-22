@@ -26,6 +26,7 @@ namespace Video_Converter
     {
         string path,output;
         private int duration;
+        string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
 
         public MainWindow()
         {
@@ -93,32 +94,20 @@ namespace Video_Converter
 
             //MessageBox.Show($"you're going to convert {Path.GetFileName(path)} {video.NaturalDuration.TimeSpan} \n to \n  ");
 
-            output = "D:\\" + outputFileName.Text + ".mp4";
+            output = @"D:\" + outputFileName.Text + ".mp4";
             LaunchCMD(path, output);
             
-            Process.Start(@"D:\testing");
+            Process.Start(@Path.GetDirectoryName(output));
             
         }
 
         private void LaunchCMD(string input, string output)
-        {
-            //ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            //processStartInfo.CreateNoWindow = false;
-            //processStartInfo.UseShellExecute = false;
-            //processStartInfo.FileName = "ffmpeg.exe";
-            //processStartInfo.WindowStyle = ProcessWindowStyle.Normal;
-            //processStartInfo.Arguments = $"-y -i {input} {output}";
-            //MessageBox.Show($"-y -i {input} {output}");
-            //using(Process exeProcess = Process.Start(processStartInfo))
-            //{
-            //    exeProcess.WaitForExit();
-            //}
-
+        {            
             var startInfo = new ProcessStartInfo
             {
-                FileName = @"C:\ffmpeg\ffmpeg.exe",
-                Arguments = @"-y -i C:\Users\comp\Downloads\ez.wmv D:\ezz.mp4",
-                WorkingDirectory = @"D:\testing\",
+                FileName = ffmpegPath,
+                Arguments = $"-y -i {input} {output}",
+                WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
                 CreateNoWindow = true,
                 UseShellExecute = false
             };
