@@ -33,17 +33,7 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.Windo
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\DataSizeUnits.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcrypto-3.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcurl.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libssl-3.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\MediaInfo.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcrypto-3.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcurl.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libssl-3.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\MediaInfo.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoInfo.dll
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoInfo.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.exe.config
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.exe.manifest
@@ -57,3 +47,9 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Co
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.application
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.exe
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Downloader.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Newtonsoft.Json.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Downloader.xml

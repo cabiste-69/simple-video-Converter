@@ -21,9 +21,9 @@
         <TextBox x:Name="fileSize" HorizontalAlignment="Left" Height="23" Margin="592,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" PreviewTextInput="fileSize_PreviewTextInput"/>
         <TextBlock HorizontalAlignment="Left" Margin="592,180,0,0" TextWrapping="Wrap" Text="Force File Size" VerticalAlignment="Top" Width="120" Height="23" Foreground="White"/>
         <ComboBox x:Name="dataUnit" HorizontalAlignment="Left" Margin="723,212,0,0" VerticalAlignment="Top" Width="59" Height="23" IsEnabled="False"/>
-       
+
         <!--<RadioButton x:Name="fileSizeY" Content="" HorizontalAlignment="Left" Margin="568,220,0,0" VerticalAlignment="Top" Checked="fileSizeY_Checked" Unchecked="fileSizeY_Unchecked"/>
         <RadioButton Content="" HorizontalAlignment="Left" Margin="526,220,0,0" VerticalAlignment="Top"/>-->
-   
+
     </Grid>
 </Window>

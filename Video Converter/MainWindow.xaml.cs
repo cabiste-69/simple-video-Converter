@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.IO;
 using Microsoft.Win32;
 using Path = System.IO.Path;
@@ -20,7 +10,9 @@ using Microsoft.WindowsAPICodePack.Dialogs;
 using System.Text.RegularExpressions;
 using DataSizeUnits;
 using NReco.VideoInfo;
-using MediaInfo;
+using Xabe.FFmpeg;
+using Xabe.FFmpeg.Downloader;
+
 
 namespace Video_Converter
 {
@@ -30,11 +22,11 @@ namespace Video_Converter
     public partial class MainWindow : Window
     {
         private static readonly Regex _regex = new Regex("[^0-9]+");
-        string path,output;
+        string path,fullOutput, outputWOEx;
         private int duration;
         
         string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
-        string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
+        public string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
 
 
         public MainWindow()
@@ -44,8 +36,8 @@ namespace Video_Converter
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
-            
-            
+            CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
+            checkForFFmpeg.FFmpegIsHere();
 
         }
 
@@ -66,8 +58,7 @@ namespace Video_Converter
             }
             double aaa = new FileInfo(path).Length;
 
-            var mediaInfo = new MediaInfo.MediaInfo();
-            mediaInfo.Open(path);
+            
             
             
             //converts it to kilobit because apparently that's what windows uses
@@ -106,44 +97,50 @@ namespace Video_Converter
                 return;
             }
 
-            output = @outputPath.Text;
-            if (output == "")
+            fullOutput = @outputPath.Text;
+            if (fullOutput == "")
             {
                 MessageBox.Show("No ouput path selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (!Directory.Exists(Path.GetDirectoryName(output)))
+            if (!Directory.Exists(Path.GetDirectoryName(fullOutput)))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(output));
+                Directory.CreateDirectory(Path.GetDirectoryName(fullOutput));
             }
-            double s = Math.Round(CalculateBitRate(), 1);
+            int s = Convert.ToInt32(CalculateBitRate());
 
             //MessageBox.Show($"path: {path} \n output: {output} \n bitrate: {s}");
-            LaunchCMD(path, output, s);
+            LaunchCMD(path, outputWOEx, s);
             
-            Process.Start(@Path.GetDirectoryName(output));
+            Process.Start(@Path.GetDirectoryName(fullOutput));
             
             
         }
 
-        private void LaunchCMD(string input, string output, double bitrate)
+        private void LaunchCMD(string input, string output, int bitrate)
         {
+
+
             var startInfo = new ProcessStartInfo
             {
                 FileName = ffmpegPath,
                 //Arguments = $"-y -i {input} -c:v libx264 -b:v {bitrate.ToString()}M -minrate {bitrate.ToString()}M -maxrate {bitrate.ToString()}M -bufsize 1M {output}",
-                Arguments = $"-y -i {input} -c:v libx264 {output}",
-                WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
+                //Arguments = $"-y -i {input} -c:v libx264 {output}{selectFormat.Text} -i {input} -c:v libx264 {output}1{selectFormat.Text}",
+                Arguments = $"-i {input} -c:v libx264 -b:v {bitrate}K -pass 1 -vsync cfr -f null /dev/null -i {input} -c:v libx264 -b:v {bitrate}K -pass 2 -c:a aac -b:a 128k {output}{selectFormat.Text}",
+
+                //WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
                 //CreateNoWindow = true,
                 UseShellExecute = false
             };
+            
             using (var process = new Process { StartInfo = startInfo })
             {
                 process.Start();
                 process.WaitForExit();
+                
             }
-            //outputPath.Text = $"-i {input} -c:v libx264 -b:v {bitrate.ToString()}K -minrate {bitrate.ToString()}K -maxrate {bitrate.ToString()}K -bufsize 1M {output}";
+            outputPath.Text = startInfo.Arguments;
 
         }
 
@@ -202,6 +199,7 @@ namespace Video_Converter
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 outputPath.Text = dialog.FileName + @"\" + outputFileName.Text.Trim() + selectFormat.Text;
+                outputWOEx = dialog.FileName + @"\" + outputFileName.Text.Trim();
             }
         }
 
