@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.IO;
 using Microsoft.Win32;
+using System.Threading.Tasks;
 using Path = System.IO.Path;
 using System.Diagnostics;
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -37,7 +38,9 @@ namespace Video_Converter
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
             CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
+
             checkForFFmpeg.FFmpegIsHere();
+            outputPath.Text = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FFmpeg");
 
         }
 

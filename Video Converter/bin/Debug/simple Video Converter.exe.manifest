@@ -114,14 +114,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="simple Video Converter.exe" size="17816">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="simple Video Converter.exe" size="18328">
       <assemblyIdentity name="simple Video Converter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gsFwg7Ay/qZApCKEhYUl5I5KvVyIPXv2X8ZEhjYHb3E=</dsig:DigestValue>
+        <dsig:DigestValue>CSpsRzB7FtJmLDG5MZ0Do9a0uornZgqcegNBsB74siY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
