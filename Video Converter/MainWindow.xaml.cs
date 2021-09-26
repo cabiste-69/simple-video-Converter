@@ -154,6 +154,11 @@ namespace Video_Converter
 
         }
 
+        private void RadioFileSize_Copy_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
