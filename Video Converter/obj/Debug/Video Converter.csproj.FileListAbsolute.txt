@@ -53,3 +53,16 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Dow
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Newtonsoft.Json.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Downloader.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoConverter.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoConverter.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\PureLib.MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.xml

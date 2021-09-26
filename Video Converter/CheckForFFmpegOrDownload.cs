@@ -20,9 +20,6 @@ namespace Video_Converter
                 if(result == MessageBoxResult.Yes)
                 {
                     FFmpegDownloader.GetLatestVersion(FFmpegVersion.Official, Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FFmpeg"));
-                    var msg = MessageBox.Show("downloading...","downloading");
-                    
-
                 }
                 else
                 {
