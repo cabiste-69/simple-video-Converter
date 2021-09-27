@@ -150,7 +150,7 @@ namespace Video_Converter
             .UseMultiThread(useMT)
             //Set output file path [string]
             .SetOutput(output);
-            MessageBox.Show("reeeeee \n"conversion.Build());
+            MessageBox.Show(conversion.Build());
             //await conversion.Start();
         }
 
