@@ -13,7 +13,8 @@ namespace Video_Converter
     class CheckForFFmpegOrDownload
     {
         public void FFmpegIsHere()
-        {                        
+        {
+           
             if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "FFmpeg")))
             {
                 var result = MessageBox.Show("do you want to install FFmpeg?", "FFmpeg doesn't exist", MessageBoxButton.YesNo);

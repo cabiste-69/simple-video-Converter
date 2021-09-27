@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Simple Video Converter" Height="600" Width="800">
     <Grid Background="#FF1F1F1F">
-        <GroupBox x:Name="groupBox" Header="Video" HorizontalAlignment="Left" Height="329" Margin="572,11,0,0" VerticalAlignment="Top" Width="210" FontSize="36" Foreground="White" BorderBrush="#FF6A6A6A"/>
+        <!--<GroupBox x:Name="groupBox" Header="Video" HorizontalAlignment="Left" Height="329" Margin="572,11,0,0" VerticalAlignment="Top" Width="210" FontSize="36" Foreground="White" BorderBrush="#FF6A6A6A"/>
         <GroupBox x:Name="groupBox1" Header="Compression" HorizontalAlignment="Left" Height="88" Margin="577,246,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
         <MediaElement x:Name="video" HorizontalAlignment="Left" Height="273" Margin="20,20,0,0" VerticalAlignment="Top" Width="517" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
         <Button x:Name="import" Content="+" HorizontalAlignment="Left" Margin="582,61,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="Import_Click"/>
@@ -32,6 +32,45 @@
         <RadioButton x:Name="RadioFileSize" Content="File Size" HorizontalAlignment="Left" Margin="582,214,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Background="#FFF7F7F7"/>
         <RadioButton x:Name="RadioFPS" Content="CRF" HorizontalAlignment="Left" Margin="657,214,0,0" VerticalAlignment="Top" Width="55" Foreground="White" Background="White"/>
         <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="735,189,0,0" TextWrapping="Wrap" Text="FPS" VerticalAlignment="Top" Foreground="White"/>
-        <TextBox x:Name="FPSvalue" HorizontalAlignment="Left" Height="23" Margin="716,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>
+        <TextBox x:Name="FPSvalue" HorizontalAlignment="Left" Height="23" Margin="716,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/>-->
+        
+        
+        
+        <TabControl Background="{x:Null}">
+            <TabItem Header="General">
+
+            </TabItem>
+            <TabItem Header="Advanced">
+                <Grid>
+                    <GroupBox x:Name="groupBox" Header="Video" HorizontalAlignment="Left" Height="329" Margin="572,11,0,0" VerticalAlignment="Top" Width="210" FontSize="36" Foreground="White" BorderBrush="#FF6A6A6A"/>
+                    <GroupBox x:Name="groupBox1" Header="Compression" HorizontalAlignment="Left" Height="88" Margin="577,246,0,0" VerticalAlignment="Top" Width="200" Foreground="White"/>
+                    <MediaElement x:Name="video" HorizontalAlignment="Left" Height="273" Margin="20,20,0,0" VerticalAlignment="Top" Width="517" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+                    <Button x:Name="import" Content="+" HorizontalAlignment="Left" Margin="582,61,0,0" VerticalAlignment="Top" Width="22" Height="23" Click="Import_Click"/>
+                    <Button x:Name="export" Content="export" HorizontalAlignment="Left" Margin="662,479,0,0" VerticalAlignment="Top" Width="120" Height="55" Click="Export_Click"/>
+                    <Button x:Name="videoPlay" Content="Play" HorizontalAlignment="Left" Margin="20,303,0,0" VerticalAlignment="Top" Width="75" Click="VideoPlay_Click"/>
+                    <Button x:Name="videoPause" Content="Pause" HorizontalAlignment="Left" Margin="100,303,0,0" VerticalAlignment="Top" Width="75" Click="VideoPause_Click"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,479,0,0" TextWrapping="Wrap" Text="Output File Name" VerticalAlignment="Top" Width="120" Height="23" Foreground="White"/>
+                    <Button x:Name="outputPathButton" Content="..." HorizontalAlignment="Left" Margin="562,511,0,0" VerticalAlignment="Top" Width="32" Height="23"/>
+                    <TextBox x:Name="outputPath" HorizontalAlignment="Left" Height="23" Margin="10,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="547"/>
+                    <ComboBox x:Name="selectFormat" HorizontalAlignment="Left" Margin="712,137,0,0" VerticalAlignment="Top" Width="60" Height="23"/>
+                    <TextBox x:Name="fileSize" HorizontalAlignment="Left" Height="23" Margin="586,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="586,264,0,0" TextWrapping="Wrap" Text="Force File Size" VerticalAlignment="Top" Width="86" Height="23" Foreground="White"/>
+                    <ComboBox x:Name="dataUnit" HorizontalAlignment="Left" Margin="711,287,0,0" VerticalAlignment="Top" Width="58" Height="23" IsEnabled="False"/>
+                    <CheckBox x:Name="fileSizeYN" Content="" HorizontalAlignment="Center" Margin="752,267,20,282" VerticalAlignment="Center" Height="20" BorderThickness="1" Width="20" Click="EnableForcedFileSize"/>
+                    <TextBox x:Name="inputFileName" HorizontalAlignment="Left" Height="23" Margin="610,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
+                    <TextBlock x:Name="WidthText" HorizontalAlignment="Left" Margin="586,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16"><Run Text="Width"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="WidthValue" HorizontalAlignment="Left" Height="23" Margin="620,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" TextAlignment="Center"/>
+                    <TextBox x:Name="HeightValue" HorizontalAlignment="Left" Height="23" Margin="716,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" TextAlignment="Center"/>
+                    <TextBlock x:Name="HeightText" HorizontalAlignment="Left" Margin="678,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16" Text="Height"/>
+                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="582,193,0,0" TextWrapping="Wrap" Text="Compression method" VerticalAlignment="Top" Foreground="White"/>
+                    <RadioButton x:Name="RadioFileSize" Content="File Size" HorizontalAlignment="Left" Margin="582,214,0,0" VerticalAlignment="Top" Width="70" Foreground="White" Background="#FFF7F7F7"/>
+                    <RadioButton x:Name="RadioFPS" Content="CRF" HorizontalAlignment="Left" Margin="657,214,0,0" VerticalAlignment="Top" Width="55" Foreground="White" Background="White"/>
+                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="735,189,0,0" TextWrapping="Wrap" Text="FPS" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBox x:Name="FPSvalue" HorizontalAlignment="Left" Height="23" Margin="716,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56"/> 
+
+                </Grid>
+               
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

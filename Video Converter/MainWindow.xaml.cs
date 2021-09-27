@@ -35,7 +35,11 @@ namespace Video_Converter
         public MainWindow()
         {
             InitializeComponent();
-            
+
+            CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
+            checkForFFmpeg.FFmpegIsHere();
+
+
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
@@ -44,8 +48,7 @@ namespace Video_Converter
             dataUnit.SelectedIndex = 1;
             //selectPreset.ItemsSource = preset;
             //selectPreset.SelectedIndex = 0;
-            CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
-            checkForFFmpeg.FFmpegIsHere();
+            
             FFmpeg.SetExecutablesPath(@"C:\Users\comp\AppData\Local\FFmpeg", "ffmpeg", "ffprobe");
             
         }
