@@ -1,22 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using DataSizeUnits;
+using MediaInfo;
+using Microsoft.Win32;
+using Microsoft.WindowsAPICodePack.Dialogs;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using Microsoft.Win32;
+using Xabe.FFmpeg;
 using Path = System.IO.Path;
-using System.Diagnostics;
-using Microsoft.WindowsAPICodePack.Dialogs;
+
 
 namespace Video_Converter
 {
@@ -25,28 +22,42 @@ namespace Video_Converter
     /// </summary>
     public partial class MainWindow : Window
     {
-        string path,output;
+        private static readonly Regex _regex = new Regex("[^0-9]+");
+        string path, fullOutput;
         private int duration;
+        long vBitrate, aBitrate;
+        bool useMT;
+        ConversionPreset[] preset = { ConversionPreset.UltraFast, ConversionPreset.SuperFast, ConversionPreset.VeryFast, ConversionPreset.Faster, ConversionPreset.Fast, ConversionPreset.Medium, ConversionPreset.Slow, ConversionPreset.Slower, ConversionPreset.VerySlow };
         string[] knownSupportedFormats = { ".mp4", ".mkv", ".flv", ".avi", ".webm", ".m4v", ".wmv" };
-        string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
+        //public string ffmpegPath = @"C:\ffmpeg\ffmpeg.exe";
+
 
         public MainWindow()
         {
             InitializeComponent();
-            
+
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
+            dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
+            selectAudioBitrate.ItemsSource = new string[] { "64", "96", "128", "160", "192", "224", "256", "288", "320" };
+            selectAudioBitrate.SelectedIndex = 8;
+            dataUnit.SelectedIndex = 1;
+            selectPreset.ItemsSource = preset;
+            selectPreset.SelectedIndex = 0;
+            CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
+            checkForFFmpeg.FFmpegIsHere();
+            FFmpeg.SetExecutablesPath(@"C:\Users\comp\AppData\Local\FFmpeg", "ffmpeg", "ffprobe");
             
         }
 
         private void ImportClick(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv";
+            openFileDialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm";
             if (openFileDialog.ShowDialog() == true)
             {
                 path = openFileDialog.FileName;
-                
+
                 video.Source = new Uri(path);
                 video.Position = TimeSpan.FromSeconds(0);
                 video.MediaOpened += PreviewMedia_MediaOpened;
@@ -54,18 +65,27 @@ namespace Video_Converter
                 video.Pause();
 
             }
+            double aaa = new FileInfo(path).Length;
+
+
+
+
+            //converts it to kilobit because apparently that's what windows uses
+            DataSize sizeInMegabytes = new DataSize(aaa, Unit.Byte).ConvertToUnit(Unit.Megabyte);
+            fileSize.Text = Convert.ToString(Math.Round(sizeInMegabytes.Quantity, 2));
+
         }
 
         void PreviewMedia_MediaOpened(object sender, RoutedEventArgs e)
         {
             var totalDurationTime = video.NaturalDuration.TimeSpan.TotalMilliseconds;
-            
-            duration = (int)video.NaturalDuration.TimeSpan.TotalMilliseconds;
+            duration = (int)video.NaturalDuration.TimeSpan.TotalSeconds;
+
         }
 
         private void VideoPlayClick(object sender, RoutedEventArgs e)
         {
-            if (video.Position.TotalMilliseconds == duration)
+            if (video.Position.TotalSeconds == duration)
             {
                 video.Position = new TimeSpan(0);
             }
@@ -77,7 +97,7 @@ namespace Video_Converter
             video.Pause();
         }
 
-        private void Export_Click(object sender, RoutedEventArgs e)
+        private async void Export_Click(object sender, RoutedEventArgs e)
         {
             //Error handeling 
             if (!video.HasVideo)
@@ -86,66 +106,91 @@ namespace Video_Converter
                 return;
             }
 
-            output = @outputPath.Text;
-            if (output == "")
+            fullOutput = @outputPath.Text;
+            if (fullOutput == "")
             {
                 MessageBox.Show("No ouput path selected", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (!Directory.Exists(Path.GetDirectoryName(output)))
+            if (!Directory.Exists(Path.GetDirectoryName(fullOutput)))
             {
-                Directory.CreateDirectory(Path.GetDirectoryName(output));
+                Directory.CreateDirectory(Path.GetDirectoryName(fullOutput));
             }
-            LaunchCMD(path, output);
+
             
-            Process.Start(@Path.GetDirectoryName(output));
+            SetVariables(selectAudioBitrate.SelectedItem.ToString(), multiT);
+            CalculateBitRate();
+            await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[selectPreset.SelectedIndex]);
+            //MessageBox.Show(vBitrate.ToString());
+
+
+        }
+
+        private async Task RunConversion(string input, string output, long vBitrate, long aBitrate, bool useMT, ConversionPreset preset)
+        {
+            var mediaInfo = await FFmpeg.GetMediaInfo(input);
+            var videoStream = mediaInfo.VideoStreams.First();
+            var audioStream = mediaInfo.AudioStreams.First();
+
+            var conversion = FFmpeg.Conversions.New()
+            //SetOverwriteOutput to overwrite files. It's useful when we already run application before [bool]
+            .SetOverwriteOutput(true)
+            //Add video stream to output file [IVideoStream]
+            .AddStream(videoStream)
+            //Add audio stream to output file [IAudioStream]
+            .AddStream(audioStream)
+            //Set conversion preset. You have to chose between file size and quality of video and duration of conversion [ConversionPreset]
+            .SetPreset(preset)
+            //sets the video's bitrate [long]
+            .SetVideoBitrate(vBitrate*1000)
+            //sets the audio's bitrate [long]
+            .SetAudioBitrate(aBitrate * 1000)
+            //set the conversion to use multithreading or not [bool]
+            .UseMultiThread(useMT)
+            //Set output file path [string]
+            .SetOutput(output);
+            MessageBox.Show(conversion.Build());
+            //await conversion.Start();
+        }
+
+
+        private void CalculateBitRate()
+        {
+            long x = Convert.ToInt64(fileSize.Text);
+            DataSize sizeInKilobytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Kilobyte);
+            vBitrate = Convert.ToInt64(sizeInKilobytes.Quantity / duration) - aBitrate;
+           // MessageBox.Show($"Wanted size: {x} \n Size in kilobytes {sizeInKilobytes.Quantity} \n video bitrate no audio: {sizeInKilobytes.Quantity / duration} \n video bitrate with audio {vBitrate}");
+        }
+
+
+        private void SetVariables(string audioBitrate, CheckBox multiT)
+        {
+            aBitrate = Convert.ToInt64(audioBitrate);
+            useMT = multiT.IsChecked.Value;
             
         }
 
-        private void LaunchCMD(string input, string output)
-        {            
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = ffmpegPath,
-                Arguments = $"-y -i {input} {output}",
-                WorkingDirectory = Path.GetDirectoryName(ffmpegPath),
-                CreateNoWindow = true,
-                UseShellExecute = false
-            };
-            using (var process = new Process { StartInfo = startInfo })
-            {
-                process.Start();
-                process.WaitForExit();
-            }
 
+        private void fileSize_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
         }
 
-        private void outputFileName_TextChanged(object sender, TextChangedEventArgs e)
+        private static bool IsTextAllowed(string text)
         {
-            if(outputFileName.Text != "")
-            {
-                outputPath.IsEnabled = true;
-                outputPathButton.IsEnabled = true;
-            }else
-            {
-                outputPath.IsEnabled = false;
-                outputPathButton.IsEnabled = false;
-            }
+            return !_regex.IsMatch(text);
         }
 
-        private void fileSizeYN_Checked(object sender, RoutedEventArgs e)
+        private void EnableForcedFileSize(object sender, RoutedEventArgs e)
         {
-            if(fileSizeYN.IsChecked == true)
+            if(checkBox.IsChecked == true)
             {
                 fileSize.IsEnabled = true;
-                dataUnit.IsEnabled = true;
             }
             else
             {
                 fileSize.IsEnabled = false;
-                fileSize.Text = "";
-                dataUnit.IsEnabled = false;
             }
         }
 
@@ -156,18 +201,17 @@ namespace Video_Converter
 
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
-            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            dialog.IsFolderPicker = true;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            //dialog.IsFolderPicker = true;
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm";
+
+            if (dialog.ShowDialog() == true)
             {
-                outputPath.Text = dialog.FileName + @"\" + outputFileName.Text + selectFormat.Text;
+                outputPath.Text = dialog.FileName + selectFormat.Text;
+
             }
         }
-
-        //private void SetTime(TimeSpan x)
-        //{
-        //    endTimeValue.Value = x;
-        //    startTimeValue.Value = new TimeSpan(0, 0, 0, 0,1);
-        //}
     }
+
 }

@@ -1,18 +1,10 @@
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.exe.config
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.exe
-D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Video Converter.pdb
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.AssemblyReference.cache
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\MainWindow.g.cs
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\App.g.cs
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.cache
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.lref
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\MainWindow.baml
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.g.resources
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video_Converter.Properties.Resources.resources
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.GenerateResource.cache
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.CoreCompileInputs.cache
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.exe
-D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.pdb
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
@@ -40,45 +32,37 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.Windo
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Video Converter.exe.config
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Video Converter.exe
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Video Converter.pdb
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.Shell.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Xceed.Wpf.Toolkit.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.pdb
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.xml
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.Shell.pdb
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.Shell.xml
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.pdb
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\Microsoft.WindowsAPICodePack.ShellExtensions.xml
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.csprojAssemblyReference.cache
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\MainWindow.g.cs
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\App.g.cs
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.cache
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter_MarkupCompile.lref
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\MainWindow.baml
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.g.resources
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video_Converter.Properties.Resources.resources
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.csproj.GenerateResource.cache
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.csproj.CoreCompileInputs.cache
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.csproj.CopyComplete
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.exe
-E:\Programming\Github desktop\simple-video-Converter\Video Converter\obj\Debug\Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\DataSizeUnits.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoInfo.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.exe.config
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.exe.manifest
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.application
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.exe
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\simple Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter_MarkupCompile.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter_MarkupCompile.lref
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.g.resources
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.exe.manifest
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.application
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.exe
+D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\simple Video Converter.pdb
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Newtonsoft.Json.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Downloader.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Newtonsoft.Json.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\Xabe.FFmpeg.Downloader.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoConverter.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\NReco.VideoConverter.xml
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\PureLib.MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.xml

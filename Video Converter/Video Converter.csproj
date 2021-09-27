@@ -7,13 +7,33 @@
     <ProjectGuid>{FA2F9C22-BFDB-473E-B608-8D6A76669534}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Video_Converter</RootNamespace>
-    <AssemblyName>Video Converter</AssemblyName>
+    <AssemblyName>simple Video Converter</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Documents\Coding\c#\Published\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ProductName>simple_Video_Converter</ProductName>
+    <PublisherName>cabiste</PublisherName>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,15 +54,45 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D3038E2F6E16F1D2B09C1F52DDA47B16E804C3C0</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Video Converter_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataSizeUnits, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataSizeUnits.2.1.0\lib\netstandard2.0\DataSizeUnits.dll</HintPath>
+    </Reference>
+    <Reference Include="MediaInfo.Wrapper, Version=21.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediaInfo.Wrapper.21.3.6\lib\net45\MediaInfo.Wrapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.2\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.VideoConverter, Version=1.1.4.0, Culture=neutral, PublicKeyToken=395ccb334978a0cd, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.VideoConverter.1.1.4\lib\net40\NReco.VideoConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="NReco.VideoInfo, Version=1.1.1.0, Culture=neutral, PublicKeyToken=8f59ee36d2987295, processorArchitecture=MSIL">
+      <HintPath>..\packages\NReco.VideoInfo.1.1.1\lib\net35\NReco.VideoInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="PureLib.MediaInfo, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PureLib.MediaInfo.1.0.2\lib\net45\PureLib.MediaInfo.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,6 +108,12 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xabe.FFmpeg, Version=5.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xabe.FFmpeg.5.0.2\lib\netstandard2.0\Xabe.FFmpeg.dll</HintPath>
+    </Reference>
+    <Reference Include="Xabe.FFmpeg.Downloader, Version=5.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xabe.FFmpeg.Downloader.5.0.2\lib\netstandard2.0\Xabe.FFmpeg.Downloader.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.4.1.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
@@ -87,6 +143,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CheckForFFmpegOrDownload.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -115,9 +172,29 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Video Converter_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MediaInfo.Native.21.3.0\build\MediaInfo.Native.targets" Condition="Exists('..\packages\MediaInfo.Native.21.3.0\build\MediaInfo.Native.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MediaInfo.Native.21.3.0\build\MediaInfo.Native.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MediaInfo.Native.21.3.0\build\MediaInfo.Native.targets'))" />
+  </Target>
 </Project>
