@@ -39,18 +39,18 @@ namespace Video_Converter
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
-            selectAudioBitrate.ItemsSource = new string[] { "64", "96", "128", "160", "192", "224", "256", "288", "320" };
-            selectAudioBitrate.SelectedIndex = 8;
+            //selectAudioBitrate.ItemsSource = new string[] { "64", "96", "128", "160", "192", "224", "256", "288", "320" };
+            //selectAudioBitrate.SelectedIndex = 8;
             dataUnit.SelectedIndex = 1;
-            selectPreset.ItemsSource = preset;
-            selectPreset.SelectedIndex = 0;
+            //selectPreset.ItemsSource = preset;
+            //selectPreset.SelectedIndex = 0;
             CheckForFFmpegOrDownload checkForFFmpeg = new CheckForFFmpegOrDownload();
             checkForFFmpeg.FFmpegIsHere();
             FFmpeg.SetExecutablesPath(@"C:\Users\comp\AppData\Local\FFmpeg", "ffmpeg", "ffprobe");
             
         }
 
-        private void ImportClick(object sender, RoutedEventArgs e)
+        private void Import_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm";
@@ -66,7 +66,7 @@ namespace Video_Converter
 
             }
             double aaa = new FileInfo(path).Length;
-
+            inputFileName.Text = path;
 
 
 
@@ -83,7 +83,7 @@ namespace Video_Converter
 
         }
 
-        private void VideoPlayClick(object sender, RoutedEventArgs e)
+        private void VideoPlay_Click(object sender, RoutedEventArgs e)
         {
             if (video.Position.TotalSeconds == duration)
             {
@@ -92,7 +92,7 @@ namespace Video_Converter
             video.Play();
         }
 
-        private void VideoPauseClick(object sender, RoutedEventArgs e)
+        private void VideoPause_Click(object sender, RoutedEventArgs e)
         {
             video.Pause();
         }
@@ -119,9 +119,9 @@ namespace Video_Converter
             }
 
             
-            SetVariables(selectAudioBitrate.SelectedItem.ToString(), multiT);
+            //SetVariables(selectAudioBitrate.SelectedItem.ToString(), multiT);
             CalculateBitRate();
-            await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[selectPreset.SelectedIndex]);
+            await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[0]);
             //MessageBox.Show(vBitrate.ToString());
 
 
@@ -182,9 +182,11 @@ namespace Video_Converter
             return !_regex.IsMatch(text);
         }
 
+
+
         private void EnableForcedFileSize(object sender, RoutedEventArgs e)
         {
-            if(checkBox.IsChecked == true)
+            if (fileSizeYN.IsChecked == true)
             {
                 fileSize.IsEnabled = true;
             }
@@ -194,15 +196,10 @@ namespace Video_Converter
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void outputPathButton_Click(object sender, RoutedEventArgs e)
         {
-            //CommonOpenFileDialog dialog = new CommonOpenFileDialog();
-            //dialog.IsFolderPicker = true;
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm";
 
