@@ -120,9 +120,9 @@ namespace Video_Converter
 
             
             SetVariables(selectAudioBitrate.SelectedItem.ToString(), multiT);
-
+            CalculateBitRate();
             await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[selectPreset.SelectedIndex]);
-            MessageBox.Show(aBitrate.ToString());
+            //MessageBox.Show(vBitrate.ToString());
 
 
         }
@@ -134,32 +134,33 @@ namespace Video_Converter
             var audioStream = mediaInfo.AudioStreams.First();
 
             var conversion = FFmpeg.Conversions.New()
+            //SetOverwriteOutput to overwrite files. It's useful when we already run application before [bool]
+            .SetOverwriteOutput(true)
             //Add video stream to output file [IVideoStream]
             .AddStream(videoStream)
             //Add audio stream to output file [IAudioStream]
             .AddStream(audioStream)
-            //SetOverwriteOutput to overwrite files. It's useful when we already run application before [bool]
-            .SetOverwriteOutput(true)
             //Set conversion preset. You have to chose between file size and quality of video and duration of conversion [ConversionPreset]
             .SetPreset(preset)
             //sets the video's bitrate [long]
-            .SetVideoBitrate(vBitrate)
+            .SetVideoBitrate(vBitrate*1000)
             //sets the audio's bitrate [long]
-            .SetAudioBitrate(aBitrate)
+            .SetAudioBitrate(aBitrate * 1000)
             //set the conversion to use multithreading or not [bool]
             .UseMultiThread(useMT)
             //Set output file path [string]
             .SetOutput(output);
-
-            await conversion.Start();
+            MessageBox.Show(conversion.Build());
+            //await conversion.Start();
         }
 
 
         private void CalculateBitRate()
         {
             long x = Convert.ToInt64(fileSize.Text);
-            DataSize sizeInMegabytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Kilobyte);
-            vBitrate = Convert.ToInt64(sizeInMegabytes.Quantity / duration) - aBitrate;
+            DataSize sizeInKilobytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Kilobyte);
+            vBitrate = Convert.ToInt64(sizeInKilobytes.Quantity / duration) - aBitrate;
+           // MessageBox.Show($"Wanted size: {x} \n Size in kilobytes {sizeInKilobytes.Quantity} \n video bitrate no audio: {sizeInKilobytes.Quantity / duration} \n video bitrate with audio {vBitrate}");
         }
 
 
