@@ -35,7 +35,7 @@ namespace Video_Converter
         public MainWindow()
         {
             InitializeComponent();
-
+            
             selectFormat.ItemsSource = knownSupportedFormats;
             selectFormat.SelectedIndex = 0;
             dataUnit.ItemsSource = new string[] { "Kb", "Mb", "Gb" };
@@ -150,7 +150,7 @@ namespace Video_Converter
             .UseMultiThread(useMT)
             //Set output file path [string]
             .SetOutput(output);
-            MessageBox.Show(conversion.Build());
+            MessageBox.Show("reeeeee \n"conversion.Build());
             //await conversion.Start();
         }
 
