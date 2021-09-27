@@ -27,11 +27,7 @@ namespace Video_Converter
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
-            
-        }
-
-        
+            InitializeComponent();            
+        }        
     }
 }
