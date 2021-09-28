@@ -50,13 +50,13 @@
                     <Button x:Name="videoPlay" Content="Play" HorizontalAlignment="Left" Margin="20,303,0,0" VerticalAlignment="Top" Width="75" Click="VideoPlay_Click"/>
                     <Button x:Name="videoPause" Content="Pause" HorizontalAlignment="Left" Margin="100,303,0,0" VerticalAlignment="Top" Width="75" Click="VideoPause_Click"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,479,0,0" TextWrapping="Wrap" Text="Output File Name" VerticalAlignment="Top" Width="120" Height="23" Foreground="White"/>
-                    <Button x:Name="outputPathButton" Content="..." HorizontalAlignment="Left" Margin="562,511,0,0" VerticalAlignment="Top" Width="32" Height="23"/>
+                    <Button x:Name="outputPathButton" Content="..." HorizontalAlignment="Left" Margin="562,511,0,0" VerticalAlignment="Top" Width="32" Height="23" Click="outputPathButton_Click"/>
                     <TextBox x:Name="outputPath" HorizontalAlignment="Left" Height="23" Margin="10,511,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="547"/>
                     <ComboBox x:Name="selectFormat" HorizontalAlignment="Left" Margin="712,137,0,0" VerticalAlignment="Top" Width="60" Height="23"/>
                     <TextBox x:Name="fileSize" HorizontalAlignment="Left" Height="23" Margin="586,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
                     <TextBlock HorizontalAlignment="Left" Margin="586,264,0,0" TextWrapping="Wrap" Text="Force File Size" VerticalAlignment="Top" Width="86" Height="23" Foreground="White"/>
                     <ComboBox x:Name="dataUnit" HorizontalAlignment="Left" Margin="711,287,0,0" VerticalAlignment="Top" Width="58" Height="23" IsEnabled="False"/>
-                    <CheckBox x:Name="fileSizeYN" Content="" HorizontalAlignment="Center" Margin="752,267,20,282" VerticalAlignment="Center" Height="20" BorderThickness="1" Width="20" Click="EnableForcedFileSize"/>
+                    <CheckBox x:Name="fileSizeYN" Content="" HorizontalAlignment="Center" Margin="749,262,17,259" VerticalAlignment="Center" Height="20" BorderThickness="1" Width="20" Click="EnableForcedFileSize"/>
                     <TextBox x:Name="inputFileName" HorizontalAlignment="Left" Height="23" Margin="610,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="162"/>
                     <TextBlock x:Name="WidthText" HorizontalAlignment="Left" Margin="586,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Height="16"><Run Text="Width"/><LineBreak/><Run/></TextBlock>
                     <TextBox x:Name="WidthValue" HorizontalAlignment="Left" Height="23" Margin="620,165,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" TextAlignment="Center"/>

@@ -57,6 +57,7 @@ namespace Video_Converter
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "video files (*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm)|*.mp4;*.flv;*.mkv;*.avi;*.3gp;*.wmv;*.webm";
+            DataSize sizeInMegabytes = new DataSize();
             if (openFileDialog.ShowDialog() == true)
             {
                 path = openFileDialog.FileName;
@@ -64,19 +65,10 @@ namespace Video_Converter
                 video.Source = new Uri(path);
                 video.Position = TimeSpan.FromSeconds(0);
                 video.MediaOpened += PreviewMedia_MediaOpened;
-                video.Play();
-                video.Pause();
-
+                sizeInMegabytes = new DataSize(new FileInfo(path).Length, Unit.Byte).ConvertToUnit(Unit.Megabyte);
+                inputFileName.Text = path;
             }
-            double aaa = new FileInfo(path).Length;
-            inputFileName.Text = path;
-
-
-
-            //converts it to kilobit because apparently that's what windows uses
-            DataSize sizeInMegabytes = new DataSize(aaa, Unit.Byte).ConvertToUnit(Unit.Megabyte);
             fileSize.Text = Convert.ToString(Math.Round(sizeInMegabytes.Quantity, 2));
-
         }
 
         void PreviewMedia_MediaOpened(object sender, RoutedEventArgs e)
@@ -124,7 +116,7 @@ namespace Video_Converter
             
             //SetVariables(selectAudioBitrate.SelectedItem.ToString(), multiT);
             CalculateBitRate();
-            await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[0]);
+            await RunConversion(path, fullOutput, vBitrate, aBitrate, useMT, preset[6]);
             //MessageBox.Show(vBitrate.ToString());
 
 
@@ -146,23 +138,23 @@ namespace Video_Converter
             //Set conversion preset. You have to chose between file size and quality of video and duration of conversion [ConversionPreset]
             .SetPreset(preset)
             //sets the video's bitrate [long]
-            .SetVideoBitrate(vBitrate*1000)
+            .SetVideoBitrate(vBitrate)
             //sets the audio's bitrate [long]
             .SetAudioBitrate(aBitrate * 1000)
             //set the conversion to use multithreading or not [bool]
             .UseMultiThread(useMT)
             //Set output file path [string]
             .SetOutput(output);
+            await conversion.Start();
             MessageBox.Show(conversion.Build());
-            //await conversion.Start();
         }
 
 
         private void CalculateBitRate()
         {
-            long x = Convert.ToInt64(fileSize.Text);
-            DataSize sizeInKilobytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Kilobyte);
-            vBitrate = Convert.ToInt64(sizeInKilobytes.Quantity / duration) - aBitrate;
+            double x = Convert.ToDouble(fileSize.Text);
+            DataSize sizeInKilobytes = new DataSize(x, Unit.Megabyte).ConvertToUnit(Unit.Byte);
+            vBitrate = Convert.ToInt64(sizeInKilobytes.Quantity / duration);
            // MessageBox.Show($"Wanted size: {x} \n Size in kilobytes {sizeInKilobytes.Quantity} \n video bitrate no audio: {sizeInKilobytes.Quantity / duration} \n video bitrate with audio {vBitrate}");
         }
 
