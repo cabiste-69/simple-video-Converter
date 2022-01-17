@@ -59,3 +59,11 @@ D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapp
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\PureLib.MediaInfo.dll
 D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\MediaInfo.Wrapper.xml
 D:\Documents\Coding\c#\Video Converter\Video Converter\obj\Debug\Video Converter.csproj.SuggestedBindingRedirects.cache
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x86\MediaInfo.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcrypto-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libcurl.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\libssl-3.dll
+D:\Documents\Coding\c#\Video Converter\Video Converter\bin\Debug\x64\MediaInfo.dll
